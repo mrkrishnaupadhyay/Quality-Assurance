@@ -1,2 +1,2 @@
-# QA-documents
-It contains all the information about the process, activities and tools used in Quality Assurance process
+# QA Internship Plan
+![QA Internship Plan 2019/2020](https://drive.google.com/open?id=1jUb7eC12VmHoYmA9DHrJZRkn409sgpOK)
