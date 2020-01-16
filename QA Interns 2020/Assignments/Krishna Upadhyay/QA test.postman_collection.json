@@ -1,0 +1,228 @@
+{
+  "info": {
+    "_postman_id": "dceb110c-2532-4329-8d6a-81d12ea62075",
+    "name": "QA test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET",
+      "item": [
+        {
+          "name": "https://gorest.co.in/public-api/users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://gorest.co.in/public-api/users",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public-api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "https://gorest.co.in/public-api/users/2342",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://gorest.co.in/public-api/users/2342",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public-api",
+                "users",
+                "2342"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "733cae41-bb4e-47da-8f49-525aa8b751a7",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "10267d4f-0eae-42d2-80bb-264dd4c8284a",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "POST",
+      "item": [
+        {
+          "name": "https://gorest.co.in/public-api/users Copy",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"email\":\"abc@email.com\",\n\t\"first_name\":\"ABC\",\n\t\"last_name\":\"XYZ\",\n\t\"gender\":\"male\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://gorest.co.in/public-api/users",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public-api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "PUT",
+      "item": [
+        {
+          "name": "https://gorest.co.in/public-api/users/2372",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"phone\":\"9998881112\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://gorest.co.in/public-api/users/2372",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public-api",
+                "users",
+                "2372"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "DELETE",
+      "item": [
+        {
+          "name": "https://gorest.co.in/public-api/users/2342",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "https://gorest.co.in/public-api/users/2342",
+              "protocol": "https",
+              "host": [
+                "gorest",
+                "co",
+                "in"
+              ],
+              "path": [
+                "public-api",
+                "users",
+                "2342"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "9KbRePq4OcfY7DT4eNZYfFzYBleS5JJu8_K3",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "62aa3ec1-bcdb-47d1-b7ab-008c50a1d4cb",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "e09d37da-75a2-4ea2-a4c2-2c2635aca2df",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
