@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "f7877267-c69f-4408-aa22-e995d260f481",
-		"name": "New Test",
+		"name": "Api Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -9,7 +9,7 @@
 			"name": "Get",
 			"item": [
 				{
-					"name": "https://gorest.co.in/public-api/users?Authorization=YqsJNjZmYsvQlho_EELPtg5zgxeGuNm5q5v3",
+					"name": "Users data",
 					"event": [
 						{
 							"listen": "test",
@@ -42,29 +42,7 @@
 					"response": []
 				},
 				{
-					"name": "https://gorest.co.in/public-api/users/2352",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://gorest.co.in/public-api/users/2352",
-							"protocol": "https",
-							"host": [
-								"gorest",
-								"co",
-								"in"
-							],
-							"path": [
-								"public-api",
-								"users",
-								"2352"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "https://gorest.co.in/public-api/users/2352",
+					"name": "2352 User data",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -92,7 +70,7 @@
 			"name": "Post",
 			"item": [
 				{
-					"name": "https://gorest.co.in/public-api/users",
+					"name": "Post users data",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -135,7 +113,7 @@
 			"name": "Put",
 			"item": [
 				{
-					"name": "https://gorest.co.in/public-api/users",
+					"name": "Update 2352 user data",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -179,7 +157,7 @@
 			"name": "Delete",
 			"item": [
 				{
-					"name": "https://gorest.co.in/public-api/users/2352",
+					"name": "Delete 2352 user data ",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -209,7 +187,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "lWFhZQ41rdraHFaKHNLo2W906OU9CVeYIDeO",
+				"value": "{{bearer_token}}",
 				"type": "string"
 			}
 		]
