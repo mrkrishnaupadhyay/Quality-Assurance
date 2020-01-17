@@ -1,4 +1,3 @@
 # Add your name in an orderly fashion.
-Eg:
-John Doe
+1. Sheshraj Kandel
 
