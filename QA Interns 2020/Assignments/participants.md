@@ -1,5 +1,4 @@
 # Add your name in an orderly fashion.
-Eg:
-John Doe
-Anushka Shrestha
+1.Sheshraj Kandel
+2.Anushka Shrestha
 
