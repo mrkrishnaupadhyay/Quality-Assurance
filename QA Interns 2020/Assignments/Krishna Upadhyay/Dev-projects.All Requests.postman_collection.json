@@ -1,0 +1,1127 @@
+{
+  "info": {
+    "_postman_id": "cad87f09-90df-4cf1-9131-d763be272bda",
+    "name": "All Requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "No Authorization",
+      "item": [
+        {
+          "name": "Get all projects without authentication key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a9897e4f-2175-44c3-bd39-d24e30534151",
+                "exec": [
+                  "const Ajv = require('ajv');",
+                  "const ajv = new Ajv({logger: console});",
+                  "const schema = {",
+                  "    \"properties\": {",
+                  "        \"error\": {",
+                  "            \"type\": \"object\",",
+                  "            \"required\": [\"code\", \"message\"],",
+                  "            \"maxProperties\": 2,",
+                  "            \"properties\": {",
+                  "                \"code\": {\"type\": \"integer\"},",
+                  "                \"message\": {\"type\": \"string\"}",
+                  "            }",
+                  "        }",
+                  "    }",
+                  "}",
+                  "",
+                  "const resObj = pm.response.json();",
+                  "",
+                  "pm.test(\"Status code is 400.\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"The response is JSON.\", function() {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"The response JSON is in valid format.\", function() {",
+                  "    pm.expect(ajv.validate(schema, resObj)).to.be.true;",
+                  "});",
+                  "",
+                  "pm.test(\"Status code in response body is 400.\", function() {",
+                  "    pm.expect(pm.response.code).to.equal(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Error message in response body is ok.\", function() {",
+                  "    pm.expect(pm.response.text()).to.include(\"Access token cannot be empty\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "1c279329-b8ad-4c40-a4dd-6f1e023658a1",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dev-projects.vyaguta.lftechnology.com/api/projects",
+              "protocol": "https",
+              "host": [
+                "dev-projects",
+                "vyaguta",
+                "lftechnology",
+                "com"
+              ],
+              "path": [
+                "api",
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "noauth"
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "fbd3234c-60ee-48df-8d3a-bb24e9bacabb",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "fdaccc2d-13a1-454e-98e5-f55f01bcb50a",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Expired Authorization",
+      "item": [
+        {
+          "name": "Get all projects without authentication key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a9897e4f-2175-44c3-bd39-d24e30534151",
+                "exec": [
+                  "const Ajv = require('ajv');",
+                  "const ajv = new Ajv({logger: console});",
+                  "const schema = {",
+                  "    \"properties\": {",
+                  "        \"error\": {",
+                  "            \"type\": \"object\",",
+                  "            \"required\": [\"code\", \"message\"],",
+                  "            \"maxProperties\": 2,",
+                  "            \"properties\": {",
+                  "                \"code\": {\"type\": \"integer\"},",
+                  "                \"message\": {\"type\": \"string\"}",
+                  "            }",
+                  "        }",
+                  "    }",
+                  "}",
+                  "",
+                  "const resObj = pm.response.json();",
+                  "",
+                  "pm.test(\"Status code is 401.\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"The response is JSON.\", function() {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"The response JSON is in valid format.\", function() {",
+                  "    pm.expect(ajv.validate(schema, resObj)).to.be.true;",
+                  "});",
+                  "",
+                  "pm.test(\"Status code in response body is 401.\", function() {",
+                  "    pm.expect(pm.response.code).to.equal(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Error message in response body is ok.\", function() {",
+                  "    pm.expect(pm.response.text()).to.include(\"Token has expired\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dev-projects.vyaguta.lftechnology.com/api/projects",
+              "protocol": "https",
+              "host": [
+                "dev-projects",
+                "vyaguta",
+                "lftechnology",
+                "com"
+              ],
+              "path": [
+                "api",
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxMDAsImRhdGVvZkJpcnRoIjoiMTk3MC0wMy0yN1QwMDowMDowMC4wMDBaIiwiYXZhdGFyVXJsIjoiaHR0cDovL2xtcy5sZnRlY2hub2xvZ3kuY29tL2ltYWdlcy8wMDEucG5nPzVhNjhmNjZiLTIzNWYtNDBmMS1hMzAzLWY4NDRiZDE0OGFmNyIsImVtcElkIjoiMDAxIiwiZW1wU3RhdHVzIjoiUGVybWFuZW50IiwiZmlyc3ROYW1lIjoiSGltYWwiLCJsYXN0TmFtZSI6Ikthcm1hY2hhcnlhIiwiZW1haWwiOiJ5YXNoaW5zaGVraCt5YXNoaW5zaGVraGhrYXJtYWNoYXJ5YUBsZnRlY2hub2xvZ3kuY29tIiwiZ2VuZGVyIjoiTUFMRSIsImdpdGh1YklkIjpudWxsLCJpc0hvZCI6dHJ1ZSwiaXNIciI6dHJ1ZSwiaXNSYWZmbGVFbGlnaWJsZSI6ZmFsc2UsImlzU3VwZXJ2aXNvciI6dHJ1ZSwibWlkZGxlTmFtZSI6bnVsbCwibW9iaWxlUGhvbmUiOiJOQSIsInRlbXBvcmFyeUFkZHJlc3MiOm51bGwsImJsb29kR3JvdXAiOm51bGwsImlzUHJvamVjdE1hbmFnZXIiOmZhbHNlLCJpc1RlYW1MZWFkIjpmYWxzZSwiaXNBY2NvdW50TWFuYWdlciI6ZmFsc2UsImlzQ29hY2giOmZhbHNlLCJpc1Blb3BsZU9wcyI6dHJ1ZSwiaXNQcm94eXBtIjpmYWxzZSwiaXNSZXNvdXJjZU1hbmFnZXIiOmZhbHNlLCJjb2FjaElkIjpudWxsLCJzdXBlcnZpc29ySWQiOm51bGwsInBlcm1hbmVudEFkZHJlc3MiOiJLYXRobWFuZHUiLCJza3lwZUlkIjpudWxsLCJob21lUGhvbmUiOm51bGx9LCJpYXQiOjE1NzkxNjcwNzksImV4cCI6MTU3OTE3MDY3OX0.oVp4mWFPUICSx_I2iEAYRh0BjVGC2feK9pYifFQM3ow",
+            "type": "string"
+          }
+        ]
+      },
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Valid Authorization",
+      "item": [
+        {
+          "name": "LMS-Core",
+          "item": [
+            {
+              "name": "Get all clients",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/clients",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "clients"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get client by valid id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/clients/1",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "clients",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get client by invalid id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/clients/14444",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "clients",
+                    "14444"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all technology stacks",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/technology-stacks",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "technology-stacks"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get technology stack by valid id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/technology-stacks/24",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "technology-stacks",
+                    "24"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get technology stack by invalid id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/technology-stacks/24434",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "technology-stacks",
+                    "24434"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all users",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/users",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all users by size",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/users?size=100",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all users by size equal to the total results shown in response",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/users?size=883",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "883"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all users by page",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/users",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all users by size and page",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/users",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get user by valid id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/users/2",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "users",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get user by invalid id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/users/3766",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "users",
+                    "3766"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all skills",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{core_uri}}/core/skills",
+                  "host": [
+                    "{{core_uri}}"
+                  ],
+                  "path": [
+                    "core",
+                    "skills"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "protocolProfileBehavior": {},
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "LMS-Projects",
+          "item": [
+            {
+              "name": "Get all projects",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "fbd6e677-7687-4c66-84ed-244587d7f141",
+                    "exec": [
+                      "const Ajv = require('ajv');",
+                      "const ajv = new Ajv({logger: console});",
+                      "",
+                      "const schema = {",
+                      "    \"type\": \"array\",",
+                      "    \"items\": {",
+                      "        \"type\": \"object\",",
+                      "        \"properties\": {",
+                      "            \"id\": {",
+                      "                \"type\": \"number\"",
+                      "            },",
+                      "            \"name\": {",
+                      "                \"type\": \"string\"",
+                      "            },",
+                      "            \"description\": {",
+                      "                \"type\": \"string\"",
+                      "            },",
+                      "            \"createdAt\": {",
+                      "                \"type\": \"string\"",
+                      "            },",
+                      "            \"updatedAt\": {",
+                      "                \"type\": \"string\"",
+                      "            },",
+                      "            \"startDate\": {",
+                      "                \"type\": \"string\"",
+                      "            },",
+                      "            \"endDate\": {",
+                      "                \"type\": \"string\"",
+                      "            },",
+                      "            \"projectManagers\": {",
+                      "                \"type\": \"array\",",
+                      "                \"items\": {",
+                      "                    \"type\": \"object\",",
+                      "                    \"properties\": {",
+                      "                        \"id\": {",
+                      "                            \"type\": \"number\"",
+                      "                        },",
+                      "                        \"name\": {",
+                      "                            \"type\": \"string\"",
+                      "                        }",
+                      "                    }",
+                      "                }",
+                      "            },",
+                      "            \"overallHealth\": {",
+                      "                \"type\": \"string\"",
+                      "            },",
+                      "            \"contract\": {",
+                      "                \"type\": \"object\",",
+                      "                \"properties\": {",
+                      "                    \"id\": {",
+                      "                        \"type\": \"number\"",
+                      "                    },",
+                      "                    \"name\": {",
+                      "                        \"type\": \"string\"",
+                      "                    }",
+                      "                }",
+                      "            },",
+                      "            \"technologyStacks\": {",
+                      "                \"type\": \"array\",",
+                      "                \"items\": {",
+                      "                    \"type\": \"string\"",
+                      "                }",
+                      "            },",
+                      "            \"status\": {",
+                      "                \"type\": \"object\",",
+                      "                \"properties\": {",
+                      "                    \"id\": {",
+                      "                        \"type\": \"number\"",
+                      "                        ",
+                      "                    },",
+                      "                    \"name\": {",
+                      "                        \"type\": \"string\"",
+                      "                    }",
+                      "                }",
+                      "            },",
+                      "            \"industry\": {",
+                      "                \"type\": \"object\",",
+                      "                \"properties\": {",
+                      "                    \"id\": {",
+                      "                        \"type\": \"number\"",
+                      "                        ",
+                      "                    },",
+                      "                    \"name\": {",
+                      "                        \"type\": \"string\"",
+                      "                    }",
+                      "                }",
+                      "            },",
+                      "            \"category\": {",
+                      "                \"type\": \"object\",",
+                      "                \"properties\": {",
+                      "                    \"id\": {",
+                      "                        \"type\": \"number\"",
+                      "                        ",
+                      "                    },",
+                      "                    \"name\": {",
+                      "                        \"type\": \"string\"",
+                      "                    }",
+                      "                }",
+                      "            },",
+                      "            \"accountManager\": {",
+                      "                \"type\": \"object\",",
+                      "                \"properties\": {",
+                      "                    \"id\": {",
+                      "                        \"type\": \"number\"",
+                      "                    },",
+                      "                    \"firstName\": {",
+                      "                        \"type\": \"string\"",
+                      "                    },",
+                      "                    \"lastName\": {",
+                      "                        \"type\": \"string\"",
+                      "                    },",
+                      "                    \"email\": {",
+                      "                        \"type\": \"string\"",
+                      "                    }",
+                      "                }",
+                      "            },",
+                      "            \"createdBy\": {",
+                      "                \"type\": \"object\",",
+                      "                \"properties\": {",
+                      "                    \"id\": {",
+                      "                        \"type\": \"number\"",
+                      "                    },",
+                      "                    \"firstName\": {",
+                      "                        \"type\": \"string\"",
+                      "                    },",
+                      "                    \"email\": {",
+                      "                        \"type\": \"string\"",
+                      "                    }",
+                      "                }",
+                      "            },",
+                      "            \"updatedBy\": {",
+                      "                \"type\": \"object\",",
+                      "                \"properties\": {",
+                      "                    \"id\": {",
+                      "                        \"type\": \"number\"",
+                      "                    },",
+                      "                    \"firstName\": {",
+                      "                        \"type\": \"string\"",
+                      "                    },",
+                      "                    \"lastName\": {",
+                      "                        \"type\": \"string\"",
+                      "                    },",
+                      "                    \"email\": {",
+                      "                        \"type\": \"string\"",
+                      "                    }",
+                      "                }",
+                      "            }",
+                      "        }",
+                      "    }",
+                      "}",
+                      "",
+                      "const resObj = pm.response.json();",
+                      "",
+                      "console.log(resObj);",
+                      "",
+                      "pm.test(\"Status code is 200.\", function() {",
+                      "   pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response JSON is in valid format.\", function() {",
+                      "    pm.expect(ajv.validate(schema, resObj)).to.be.true;",
+                      "});",
+                      "",
+                      "// pm.test(\"\", function() {",
+                      "    ",
+                      "// });"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{projects_uri}}/projects",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get a particular project",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "fbd6e677-7687-4c66-84ed-244587d7f141",
+                    "exec": [
+                      "const Ajv = require('ajv');",
+                      "const ajv = new Ajv({logger: console});",
+                      "",
+                      "const schema = {",
+                      "    \"type\": \"object\",",
+                      "    \"properties\": {",
+                      "        \"id\": {",
+                      "            \"type\": \"number\"",
+                      "        },",
+                      "        \"name\": {",
+                      "            \"type\": \"string\"",
+                      "        },",
+                      "        \"description\": {",
+                      "            \"type\": \"string\"",
+                      "        },",
+                      "        \"createdAt\": {",
+                      "            \"type\": \"string\"",
+                      "        },",
+                      "        \"updatedAt\": {",
+                      "            \"type\": \"string\"",
+                      "        },",
+                      "        \"startDate\": {",
+                      "            \"type\": \"string\"",
+                      "        },",
+                      "        \"endDate\": {",
+                      "            \"type\": \"string\"",
+                      "        },",
+                      "        \"projectManagers\": {",
+                      "            \"type\": \"array\",",
+                      "            \"items\": {",
+                      "                \"type\": \"object\",",
+                      "                \"properties\": {",
+                      "                    \"id\": {",
+                      "                        \"type\": \"number\"",
+                      "                    },",
+                      "                    \"name\": {",
+                      "                        \"type\": \"string\"",
+                      "                    }",
+                      "                }",
+                      "            }",
+                      "        },",
+                      "        \"overallHealth\": {",
+                      "            \"type\": \"string\"",
+                      "        },",
+                      "        \"contract\": {",
+                      "            \"type\": \"object\",",
+                      "            \"properties\": {",
+                      "                \"id\": {",
+                      "                    \"type\": \"number\"",
+                      "                },",
+                      "                \"name\": {",
+                      "                    \"type\": \"string\"",
+                      "                }",
+                      "            }",
+                      "        },",
+                      "        \"technologyStacks\": {",
+                      "            \"type\": \"array\",",
+                      "            \"items\": {",
+                      "                \"type\": \"string\"",
+                      "            }",
+                      "        },",
+                      "        \"status\": {",
+                      "            \"type\": \"object\",",
+                      "            \"properties\": {",
+                      "                \"id\": {",
+                      "                    \"type\": \"number\"",
+                      "                    ",
+                      "                },",
+                      "                \"name\": {",
+                      "                    \"type\": \"string\"",
+                      "                }",
+                      "            }",
+                      "        },",
+                      "        \"industry\": {",
+                      "            \"type\": \"object\",",
+                      "            \"properties\": {",
+                      "                \"id\": {",
+                      "                    \"type\": \"number\"",
+                      "                    ",
+                      "                },",
+                      "                \"name\": {",
+                      "                    \"type\": \"string\"",
+                      "                }",
+                      "            }",
+                      "        },",
+                      "        \"category\": {",
+                      "            \"type\": \"object\",",
+                      "            \"properties\": {",
+                      "                \"id\": {",
+                      "                    \"type\": \"number\"",
+                      "                    ",
+                      "                },",
+                      "                \"name\": {",
+                      "                    \"type\": \"string\"",
+                      "                }",
+                      "            }",
+                      "        },",
+                      "        \"accountManager\": {",
+                      "            \"type\": \"object\",",
+                      "            \"properties\": {",
+                      "                \"id\": {",
+                      "                    \"type\": \"number\"",
+                      "                },",
+                      "                \"firstName\": {",
+                      "                    \"type\": \"string\"",
+                      "                },",
+                      "                \"lastName\": {",
+                      "                    \"type\": \"string\"",
+                      "                },",
+                      "                \"email\": {",
+                      "                    \"type\": \"string\"",
+                      "                }",
+                      "            }",
+                      "        },",
+                      "        \"createdBy\": {",
+                      "            \"type\": \"object\",",
+                      "            \"properties\": {",
+                      "                \"id\": {",
+                      "                    \"type\": \"number\"",
+                      "                },",
+                      "                \"firstName\": {",
+                      "                    \"type\": \"string\"",
+                      "                },",
+                      "                \"email\": {",
+                      "                    \"type\": \"string\"",
+                      "                }",
+                      "            }",
+                      "        },",
+                      "        \"updatedBy\": {",
+                      "            \"type\": \"object\",",
+                      "            \"properties\": {",
+                      "                \"id\": {",
+                      "                    \"type\": \"number\"",
+                      "                },",
+                      "                \"firstName\": {",
+                      "                    \"type\": \"string\"",
+                      "                },",
+                      "                \"lastName\": {",
+                      "                    \"type\": \"string\"",
+                      "                },",
+                      "                \"email\": {",
+                      "                    \"type\": \"string\"",
+                      "                }",
+                      "            }",
+                      "        }",
+                      "    }",
+                      "}",
+                      "",
+                      "",
+                      "const resObj = pm.response.json();",
+                      "",
+                      "console.log(resObj);",
+                      "",
+                      "pm.test(\"Status code is 200.\", function() {",
+                      "   pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response JSON is in valid format.\", function() {",
+                      "    pm.expect(ajv.validate(schema, resObj)).to.be.true;",
+                      "});",
+                      "",
+                      "// pm.test(\"\", function() {",
+                      "    ",
+                      "// });"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{projects_uri}}/projects/12",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "12"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all project categories",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{projects_uri}}/projects/categories",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all project industries",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{projects_uri}}/projects/industries",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "industries"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get all project status-types",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{projects_uri}}/projects/status-types",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects",
+                    "status-types"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create a new project",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"name\": \"ABCD Projects Inc\",\n\t\"status\": {\n\t\t\"id\": 2,\n\t\t\"name\": \"Closed\"\n\t},\n\t\"category\": {\n\t\t\"id\": 1,\n\t\t\"name\": \"Services\"\n\t},\n\t\"industry\": {\n\t\t\"id\": 1,\n\t\t\"name\": \"Advertising\"\n\t},\n\t \"accountManager\": {\n        \"id\": 100,\n        \"firstName\": \"Himal\",\n        \"lastName\": \"Karmacharya\",\n        \"email\": \"yashinshekh+yashinshekhhkarmacharya@lftechnology.com\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{projects_uri}}/projects",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create a new project with empty body",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{projects_uri}}/projects",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create a new project with invalid ids",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"name\": \"ABCDE Projects Inc\",\n\t\"status\": {\n\t\t\"id\": 2000,\n\t\t\"name\": \"Closed\"\n\t},\n\t\"category\": {\n\t\t\"id\": 1000,\n\t\t\"name\": \"Services\"\n\t},\n\t\"industry\": {\n\t\t\"id\": 1000,\n\t\t\"name\": \"Advertising\"\n\t},\n\t \"accountManager\": {\n        \"id\": 100000,\n        \"firstName\": \"Himal\",\n        \"lastName\": \"Karmacharya\",\n        \"email\": \"yashinshekh+yashinshekhhkarmacharya@lftechnology.com\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{projects_uri}}/projects",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create a new project excluding other fields than ids",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"name\": \"ABCDE Projects Inc\",\n\t\"status\": {\n\t\t\"id\": 2\n\t},\n\t\"category\": {\n\t\t\"id\": 1\n\t},\n\t\"industry\": {\n\t\t\"id\": 1\n\t},\n\t \"accountManager\": {\n        \"id\": 100\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{projects_uri}}/projects",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create a new project changing values of other fields than ids",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "name": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"name\": \"ABCDE Projects Inc\",\n\t\"status\": {\n\t\t\"id\": 2,\n\t\t\"name\": \"Closed and Closed\"\n\t},\n\t\"category\": {\n\t\t\"id\": 1,\n\t\t\"name\": \"Services with Nothing\"\n\t},\n\t\"industry\": {\n\t\t\"id\": 1,\n\t\t\"name\": \"Advertising and Marketing\"\n\t},\n\t \"accountManager\": {\n        \"id\": 100,\n        \"firstName\": \"Himal Dai\",\n        \"lastName\": \"Karmacharya Dai\",\n        \"email\": \"yashinshekh+yashinshekhhkarmacharya+hello@lftechnology.com\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{projects_uri}}/projects",
+                  "host": [
+                    "{{projects_uri}}"
+                  ],
+                  "path": [
+                    "projects"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "protocolProfileBehavior": {},
+          "_postman_isSubFolder": true
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearer_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "3a31f070-2b52-40d5-b875-ad9f3f197170",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "ce138e8c-f6af-4d09-9395-aa06870a4a87",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
