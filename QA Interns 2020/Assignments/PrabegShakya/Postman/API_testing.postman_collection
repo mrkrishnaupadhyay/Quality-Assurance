@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "3fe52c13-f740-4254-b631-0037c4c343ff",
+		"name": "API testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "test1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gorest.co.in/public-api/users/1822",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public-api",
+								"users",
+								"1822"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTest2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "36c3fcb5-41a5-41cd-b0f1-68ef9c18f876",
+								"exec": [
+									"console.log('Request 1 pre-request script');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gorest.co.in/public-api/users/1830",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public-api",
+								"users",
+								"1830"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTest3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://gorest.co.in/public-api/users/1822",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public-api",
+								"users",
+								"1822"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "postTest1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"shakyaprabeg@gmail.com\",\n\t\"first_name\": \"Prabeg\",\n\t\"last_name\": \"Shakya\",\n\t\"gender\": \"male\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public-api/users",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public-api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postTest2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"abcd@gmail.com\",\n\t\"first_name\": \"Pranjal\",\n\t\"last_name\": \"Bastola\",\n\t\"gender\": \"male\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public-api/users",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public-api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "putTest1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"first_name\": \"Prabeg\",\n        \"last_name\": \"Shakya\",\n        \"gender\": \"male\",\n        \"dob\": \"1997-06-11\",\n        \"email\": \"shakyaprabeg@gmail.com\",\n        \"phone\": \"123456789\",\n        \"website\": \"http://www.google.com\",\n        \"address\": \"Dallu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public-api/users/1822",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public-api",
+								"users",
+								"1822"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putTest2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "87eb28e4-6fcd-420d-9f58-34c50e9b72c1",
+								"exec": [
+									"con"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\t\"first_name\": \"Pranjal\",\r\n        \"last_name\": \"Bastola\",\r\n        \"gender\": \"male\",\r\n        \"dob\": null,\r\n        \"email\": \"abcd@gmail.com\",\r\n        \"phone\": \"987654321\",\r\n        \"website\": \"https://www.facecopy.com\",\r\n        \"address\": \"Dilibazar\",\r\n        \"status\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public-api/users/1830",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public-api",
+								"users",
+								"1830"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "deleteTest1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://gorest.co.in/public-api/users/1830",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public-api",
+								"users",
+								"1830"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "ImxjQJZa5RsUS1S20rj6txVXeo7yHb8UNOd3",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6cecb2bc-4260-4072-8a5f-2a79268c5ccd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "840f3a4c-8e6c-40c2-85fa-c44a7fc9e617",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+
+}
